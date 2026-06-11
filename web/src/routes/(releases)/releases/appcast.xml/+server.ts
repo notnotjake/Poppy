@@ -18,6 +18,7 @@ function escapeXml(value: string | number) {
 
 export async function GET() {
 	const releases = await listAppcastReleases()
+	const fullReleaseNotesUrl = absoluteUrl('/releases/changelog')
 	const items = releases
 		.map((release) => {
 			const releaseNotesUrl = absoluteUrl(`/releases/${release.version}`)
@@ -30,6 +31,7 @@ export async function GET() {
 			<sparkle:version>${escapeXml(release.build)}</sparkle:version>
 			<sparkle:shortVersionString>${escapeXml(release.version)}</sparkle:shortVersionString>
 			<sparkle:releaseNotesLink>${escapeXml(releaseNotesUrl)}</sparkle:releaseNotesLink>
+			<sparkle:fullReleaseNotesLink>${escapeXml(fullReleaseNotesUrl)}</sparkle:fullReleaseNotesLink>
 			<pubDate>${escapeXml(release.publishedAt.toUTCString())}</pubDate>
 			<enclosure
 				url="${escapeXml(downloadUrl)}"
