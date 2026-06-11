@@ -1,0 +1,33 @@
+# In app browser:
+- The user has the in-app browser open.
+- Current URL: https://poppy-app.test/
+
+## My request for Codex:
+Okay, and now i have this video file that i like that i want to put in the hero behind the text and that would be masked into a circular/oval shape and have a subtle fade/feather on the edges and maybe a blur of the edges. i will put the video file into the project in static/ and we want it to playback at like 0.5x speed and play forward once then stop at the end. can you add that to the page?
+
+---
+
+# In app browser:
+- The user has the in-app browser open.
+- Current URL: https://poppy-app.test/
+
+## My request for Codex:
+Okay, and now i have this video file that i like that i want to put in the hero behind the text and that would be masked into a circular/oval shape and have a subtle fade/feather on the edges and maybe a blur of the edges. i will put the video file into the project in static/ and we want it to playback at like 0.5x speed and play forward once then stop at the end. can you add that to the page?
+
+---
+
+# In app browser:
+- The user has the in-app browser open.
+- Current URL: https://poppy-app.test/
+
+## My request for Codex:
+the fade doesnt really work. i can still see rough edges on most sides. and it doesnt feel like its being set to fill it feels like its being set to fit. we want the video to fill the shape and then the shape to have a blur or feather on the edges so its like peering into another world almost
+
+---
+
+# In app browser:
+- The user has the in-app browser open.
+- Current URL: https://poppy-app.test/
+
+## My request for Codex:
+the fade doesnt really work. i can still see rough edges on most sides. and it doesnt feel like its being set to fill it feels like its being set to fit. we want the video to fill the shape and then the shape to have a blur or feather on the edges so its like peering into another world almost
