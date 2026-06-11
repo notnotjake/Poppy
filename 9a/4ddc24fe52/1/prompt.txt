@@ -1,0 +1,9 @@
+currently in our sparkle implementation, if there is an update available and you click to view Version History, it takes you to the latest release changelog, not the historical changelog which is what i would prefer it do. is this something we can configure or is it out of our hands?
+
+---
+
+what would `SPUStandardUserDriverDelegate.standardUserDriverShowVersionHistoryForAppcastItem` be? Because adding the xml record would mean updating ci, the schema, db and api.
+
+---
+
+lets update our xml but lets just hardcode the output so that when we generate that xml we inject it. that way we dont have to update our db or ci, just the xml generated route.

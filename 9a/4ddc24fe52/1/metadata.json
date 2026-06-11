@@ -1,0 +1,79 @@
+{
+  "cli_version": "0.7.5",
+  "checkpoint_id": "9a4ddc24fe52",
+  "session_id": "019eb7a0-cccb-7180-a05c-e6a920f0de21",
+  "strategy": "manual-commit",
+  "created_at": "2026-06-11T17:15:23.701495Z",
+  "branch": "main",
+  "checkpoints_count": 3,
+  "files_touched": [
+    "web/src/routes/+page.svelte"
+  ],
+  "agent": "Codex",
+  "model": "gpt-5.5",
+  "turn_id": "cde921877dc5",
+  "token_usage": {
+    "input_tokens": 148950,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 1175296,
+    "output_tokens": 6349,
+    "api_call_count": 18
+  },
+  "session_metrics": {
+    "turn_count": 3
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-06-11T17:15:23.683402Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 6,
+    "human_modified": 6,
+    "human_removed": 0,
+    "total_committed": 6,
+    "total_lines_changed": 12,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 364,
+      "user_lines_removed": 59,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".codex/environments/environment.toml": 1,
+        "app/Poppy/App/PoppyApp.swift": 76,
+        "app/Poppy/Models/AppItem.swift": 5,
+        "app/Poppy/Models/InstallableItem.swift": 2,
+        "app/Poppy/Stores/InstallStore.swift": 134,
+        "app/Poppy/Views/SettingsView.swift": 59,
+        "app/releases/0.4.0.json": 2,
+        "web/src/routes/+page.svelte": 85
+      },
+      "user_removed_per_file": {
+        ".codex/environments/environment.toml": 1,
+        "app/Poppy/App/PoppyApp.swift": 33,
+        "app/Poppy/Models/AppItem.swift": 10,
+        "app/Poppy/Stores/InstallStore.swift": 1,
+        "app/Poppy/Views/SettingsView.swift": 10,
+        "app/releases/0.4.0.json": 2,
+        "web/src/routes/+page.svelte": 2
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 85,
+      "agent_lines_removed": 2
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 85,
+      "agent_lines_removed": 2
+    }
+  ]
+}
