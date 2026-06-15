@@ -1,0 +1,33 @@
+so we have a video asset [field-video.mp4](static/field-video.mp4) that i want to play slow mo on the home page. currently its something like 7 or 10 seconds and i would assume around 24-60fps. so we are playing it slowed but that looks really jerky/stuttery. so i want to use topaz apollo model to interpolate the existing frames to create a nice slowmo video we can use that will playback at a nice 30 or 60fps. 
+
+so we need to figure out what the video is currently at, what we want to take it to, and the i want to use the topaz api's to use the apollo model so i can just pay for usage. can you help me figure all this out so we can get a nice video for the home page?
+
+---
+
+so we have a video asset [field-video.mp4](static/field-video.mp4) that i want to play slow mo on the home page. currently its something like 7 or 10 seconds and i would assume around 24-60fps. so we are playing it slowed but that looks really jerky/stuttery. so i want to use topaz apollo model to interpolate the existing frames to create a nice slowmo video we can use that will playback at a nice 30 or 60fps. 
+
+so we need to figure out what the video is currently at, what we want to take it to, and the i want to use the topaz api's to use the apollo model so i can just pay for usage. can you help me figure all this out so we can get a nice video for the home page?
+
+---
+
+Okay. So im right now signing up. i can buy 20 creds for 5 bucks. is that enough to start?
+
+---
+
+Okay. So im right now signing up. i can buy 20 creds for 5 bucks. is that enough to start?
+
+---
+
+okay, i have purchased the credits and i added a `TOPAZ` key to my .env so if you create a bun script that uses env vars then it can pick that up.
+
+---
+
+okay, i have purchased the credits and i added a `TOPAZ` key to my .env so if you create a bun script that uses env vars then it can pick that up.
+
+---
+
+okay work until we have the new video please.
+
+---
+
+okay work until we have the new video please.

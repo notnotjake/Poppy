@@ -1,0 +1,77 @@
+{
+  "cli_version": "0.7.5",
+  "checkpoint_id": "0ec6b9ec8a2e",
+  "session_id": "019ec977-5377-7190-9626-b26c5c5c38a1",
+  "strategy": "manual-commit",
+  "created_at": "2026-06-15T04:52:17.807177Z",
+  "branch": "main",
+  "checkpoints_count": 4,
+  "files_touched": [
+    "web/src/routes/+page.svelte",
+    "web/static/field-video-slowmo-4x-60fps-h264.mp4",
+    "web/static/field-video-slowmo-4x-60fps.mp4"
+  ],
+  "agent": "Codex",
+  "model": "gpt-5.5",
+  "turn_id": "ce23c05d143f",
+  "token_usage": {
+    "input_tokens": 349864,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 5364480,
+    "output_tokens": 22491,
+    "api_call_count": 58
+  },
+  "session_metrics": {
+    "turn_count": 8
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-06-15T04:52:17.779196Z",
+    "agent_lines": 0,
+    "agent_removed": 10,
+    "human_added": 0,
+    "human_modified": 14,
+    "human_removed": 41,
+    "total_committed": 0,
+    "total_lines_changed": 65,
+    "agent_percentage": 15.384615384615385,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 54,
+      "user_lines_removed": 57,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "app/Poppy/Stores/InstallStore.swift": 2,
+        "web/src/routes/+page.svelte": 52
+      },
+      "user_removed_per_file": {
+        "app/Poppy/Stores/InstallStore.swift": 5,
+        "web/src/routes/+page.svelte": 52
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 54,
+      "agent_lines_removed": 57
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 54,
+      "agent_lines_removed": 57
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 485,
+      "agent_lines_removed": 57
+    }
+  ]
+}
