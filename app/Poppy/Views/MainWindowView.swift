@@ -1163,9 +1163,9 @@ private extension AppItem.State {
 
     var canHide: Bool {
         switch self {
-        case .ready, .installedNeedsCleanup:
+        case .ready:
             return true
-        case .hidden, .installing, .installedCleanedUp:
+        case .hidden, .installing, .installedCleanedUp, .installedNeedsCleanup:
             return false
         }
     }

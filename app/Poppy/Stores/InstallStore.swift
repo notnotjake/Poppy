@@ -179,11 +179,8 @@ final class InstallStore: ObservableObject {
     }
 
     private func presentFolderPanel(_ panel: NSOpenPanel, completion: @escaping (NSApplication.ModalResponse) -> Void) {
-        if let window = NSApp.keyWindow ?? NSApp.mainWindow {
-            panel.beginSheetModal(for: window, completionHandler: completion)
-        } else {
-            panel.begin(completionHandler: completion)
-        }
+        NSApp.activate(ignoringOtherApps: true)
+        panel.begin(completionHandler: completion)
     }
 
     func promptForLatestInstallableInWatchedFolder() {

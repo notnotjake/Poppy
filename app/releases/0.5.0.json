@@ -1,0 +1,6 @@
+{
+	"version": "0.5.0",
+	"build_number": 6,
+	"title": "App Refinements",
+	"changelog": "Improved app organization.\n\nFixed bugs with Hide in Dock option.\n\nImproved hidden item handling.\n\nFixed metadata for .app bundles.\n\nFixed Available items count.\n\nReorganized and refined the settings screen.\n\nHid the Debug menu."
+}
