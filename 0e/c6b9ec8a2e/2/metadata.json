@@ -1,0 +1,52 @@
+{
+  "cli_version": "0.7.5",
+  "checkpoint_id": "0ec6b9ec8a2e",
+  "session_id": "019eb7c6-ec41-7062-b5d1-8506309b62d7",
+  "strategy": "manual-commit",
+  "created_at": "2026-06-15T04:52:14.477036Z",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "web/src/routes/+page.svelte"
+  ],
+  "agent": "Codex",
+  "model": "gpt-5.5",
+  "turn_id": "fb93b41b3fee",
+  "token_usage": {
+    "input_tokens": 99393,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 404736,
+    "output_tokens": 3877,
+    "api_call_count": 10
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-06-15T04:52:14.462907Z",
+    "agent_lines": 0,
+    "agent_removed": 10,
+    "human_added": 0,
+    "human_modified": 14,
+    "human_removed": 41,
+    "total_committed": 0,
+    "total_lines_changed": 65,
+    "agent_percentage": 15.384615384615385,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 49,
+      "user_lines_removed": 52,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "web/src/routes/+page.svelte": 49
+      },
+      "user_removed_per_file": {
+        "web/src/routes/+page.svelte": 52
+      }
+    }
+  ]
+}

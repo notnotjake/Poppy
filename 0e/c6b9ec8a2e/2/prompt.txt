@@ -1,0 +1,1 @@
+we've reintroduced the previous issue that going to choose watching or install to locations causes the app to hang and has to be force quit
