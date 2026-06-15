@@ -1,0 +1,13 @@
+why are there two copies of the video?
+
+---
+
+remove the video entirely for now and lets just focus on getting the mask correctly shaped and blurred first and then we can try again
+
+---
+
+remove the video entirely for now and lets just focus on getting the mask correctly shaped and blurred first and then we can try again
+
+---
+
+wow that looks awful. so its a rectangular element that you have a background radial blur on? and then a filter? no no no. thats not gonna cut it. we want an oval shape that has a true feather/blur on the edges. use a blue background for now so i can see it more clearly
