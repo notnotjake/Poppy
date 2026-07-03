@@ -2,7 +2,7 @@ import AppKit
 import Combine
 
 @MainActor
-final class AppLifecycleController: ObservableObject {
+final class AppLifecycleController: NSObject, ObservableObject, NSWindowDelegate {
     static let hideInDockKey = "hideInDock"
     static let hideInMenuBarKey = "hideInMenuBar"
     private static let mainWindowFrameAutosaveName = "PoppyMainWindowFrame"
@@ -10,8 +10,6 @@ final class AppLifecycleController: ObservableObject {
     @Published private(set) var hideInDock: Bool
     @Published private(set) var hideInMenuBar: Bool
 
-    private var observedMainWindows: Set<ObjectIdentifier> = []
-    private var observedPresentedWindows: Set<ObjectIdentifier> = []
     private var notificationObserversByWindow: [ObjectIdentifier: NSObjectProtocol] = [:]
     private weak var mainWindow: NSWindow?
     private var shouldBringMainWindowForward = false
@@ -20,6 +18,7 @@ final class AppLifecycleController: ObservableObject {
     init(userDefaults: UserDefaults = .standard) {
         hideInDock = userDefaults.object(forKey: Self.hideInDockKey) as? Bool ?? true
         hideInMenuBar = userDefaults.bool(forKey: Self.hideInMenuBarKey)
+        super.init()
     }
 
     func applicationDidFinishLaunching() {
@@ -67,54 +66,43 @@ final class AppLifecycleController: ObservableObject {
     }
 
     func applicationShouldHandleReopen(hasVisibleWindows: Bool) -> Bool {
-        guard observedMainWindows.isEmpty else {
-            NSApp.activate(ignoringOtherApps: true)
-            return false
-        }
-
         showMainWindow()
         return false
     }
 
     func observeMainWindow(_ window: NSWindow) {
-        let id = ObjectIdentifier(window)
-        mainWindow = window
+        if let mainWindow, mainWindow !== window {
+            bringMainWindowForward(mainWindow)
+            window.close()
+            return
+        }
 
-        guard !observedMainWindows.contains(id) else {
+        if mainWindow === window {
+            window.delegate = self
             if shouldBringMainWindowForward {
                 bringMainWindowForward(window)
             }
             return
         }
 
-        observedMainWindows.insert(id)
+        mainWindow = window
+        window.delegate = self
         configureMainWindow(window)
-        updateActivationPolicy()
+        NSApp.setActivationPolicy(.regular)
 
         if shouldBringMainWindowForward {
             bringMainWindowForward(window)
         }
+    }
 
-        let observer = NotificationCenter.default.addObserver(
-            forName: NSWindow.willCloseNotification,
-            object: window,
-            queue: .main
-        ) { [weak self, weak window] _ in
-            guard let self, let window else { return }
-            Task { @MainActor in
-                let id = ObjectIdentifier(window)
-                self.observedMainWindows.remove(id)
-                if let observer = self.notificationObserversByWindow.removeValue(forKey: id) {
-                    NotificationCenter.default.removeObserver(observer)
-                }
-                if self.mainWindow === window {
-                    self.mainWindow = nil
-                }
-                self.updateActivationPolicy()
-            }
+    func windowShouldClose(_ sender: NSWindow) -> Bool {
+        guard sender === mainWindow else {
+            return true
         }
 
-        notificationObserversByWindow[id] = observer
+        sender.orderOut(nil)
+        applyActivationPolicyAfterMainWindowHides()
+        return false
     }
 
     func observeSettingsWindow(_ window: NSWindow) {
@@ -124,23 +112,19 @@ final class AppLifecycleController: ObservableObject {
 
     private func observePresentedWindow(_ window: NSWindow) {
         let id = ObjectIdentifier(window)
-        guard !observedMainWindows.contains(id), !observedPresentedWindows.contains(id) else { return }
-
-        observedPresentedWindows.insert(id)
+        guard window !== mainWindow, notificationObserversByWindow[id] == nil else { return }
 
         let observer = NotificationCenter.default.addObserver(
             forName: NSWindow.willCloseNotification,
             object: window,
             queue: .main
-        ) { [weak self, weak window] _ in
-            guard let self, let window else { return }
+        ) { [weak self, id] _ in
+            guard let self else { return }
+
             Task { @MainActor in
-                let id = ObjectIdentifier(window)
-                self.observedPresentedWindows.remove(id)
                 if let observer = self.notificationObserversByWindow.removeValue(forKey: id) {
                     NotificationCenter.default.removeObserver(observer)
                 }
-                self.updateActivationPolicy()
             }
         }
 
@@ -148,7 +132,15 @@ final class AppLifecycleController: ObservableObject {
     }
 
     private func updateActivationPolicy() {
-        if hideInDock && observedMainWindows.isEmpty && observedPresentedWindows.isEmpty {
+        if hideInDock && mainWindow?.isVisible != true {
+            NSApp.setActivationPolicy(.accessory)
+        } else {
+            NSApp.setActivationPolicy(.regular)
+        }
+    }
+
+    private func applyActivationPolicyAfterMainWindowHides() {
+        if hideInDock {
             NSApp.setActivationPolicy(.accessory)
         } else {
             NSApp.setActivationPolicy(.regular)
@@ -195,7 +187,7 @@ final class AppLifecycleController: ObservableObject {
     private func existingPresentedSettingsWindow() -> NSWindow? {
         NSApp.windows.first { window in
             isSettingsWindowCandidate(window)
-                && !observedMainWindows.contains(ObjectIdentifier(window))
+                && window !== mainWindow
                 && !(window is NSPanel)
         }
     }
